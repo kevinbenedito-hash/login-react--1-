@@ -1,0 +1,23 @@
+@baseUrl = http://localhost:3001
+
+### Login válido (retorna o access_token)
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "123456"
+}
+
+### Login inválido (deve retornar 401)
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "senha-errada"
+}
+
+### Rota protegida: cole o access_token no lugar de SEU_TOKEN
+GET {{baseUrl}}/auth/me
+Authorization: Bearer SEU_TOKEN
